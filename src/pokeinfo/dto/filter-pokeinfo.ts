@@ -1,20 +1,17 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 
 export class FilterPokeinfoDto {
 
-    @IsString()
-    @ApiProperty({ example: 'pikachu', description: 'Nombre del Pokemon' })
-    @IsNotEmpty()
-    name: string;
+    @IsOptional()
+    @ApiProperty({ example: 'pikachu', description: 'Nombre del Pokemon', required: false })
+    name?: string;
 
-    @IsNumber()
-    @ApiProperty({ example: 1, description: 'Experiencia del Pokemon' })
-    @IsNotEmpty()
-    base_experience: number;
+    @IsOptional()
+    @ApiProperty({ example: '1', description: 'Experiencia del Pokemon', required: false })
+    base_experience?: string;
 
-    @IsNumber()
-    @ApiProperty({ example: 1, description: 'Altura del Pokemon' })
-    @IsNotEmpty()
-    height: number;
+    @IsOptional()
+    @ApiProperty({ example: '1', description: 'Altura del Pokemon', required: false })
+    height?: string;
 }
