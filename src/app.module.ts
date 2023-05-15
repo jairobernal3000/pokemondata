@@ -1,12 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { PokeinfoModule } from './pokeinfo/pokeinfo.module';
+import { ConfigModule } from '@nestjs/config';
+import { ormPokemon } from './config/typeorm.config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { PokeinfoModule } from './pokeinfo/pokeinfo.module';
 
 @Module({
-  imports: [PokeinfoModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
+    TypeOrmModule.forRootAsync(ormPokemon),
+    PokeinfoModule
+  ]
 })
 export class AppModule {}
