@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { PokeinfoModule } from './pokeinfo/pokeinfo.module';
+import { PokeinfoModule } from './pokeinfo/pokeinfo.module';
 
 @Module({
-  imports: [],
+  imports: [PokeinfoModule],
   controllers: [AppController],
   providers: [AppService],
 })
